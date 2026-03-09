@@ -2,13 +2,16 @@ public class Main {
 
     public static void main(String[] args) {
 
-        NotificationManager emailManager = new NotificationManager(new EmailService());
+        NotificationService emailService = NotificationFactory.createService("email");
+        NotificationManager emailManager = new NotificationManager(emailService);
         emailManager.sendNotification("Hola por email");
 
-        NotificationManager smsManager = new NotificationManager(new SMSService());
+        NotificationService smsService = NotificationFactory.createService("sms");
+        NotificationManager smsManager = new NotificationManager(smsService);
         smsManager.sendNotification("Hola por sms");
 
-        NotificationManager pushManager = new NotificationManager(new PushService());
+        NotificationService pushService = NotificationFactory.createService("push");
+        NotificationManager pushManager = new NotificationManager(pushService);
         pushManager.sendNotification("Hola por push");
     }
 }
