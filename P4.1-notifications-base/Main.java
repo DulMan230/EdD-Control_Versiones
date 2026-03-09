@@ -1,11 +1,14 @@
-// Main.java - Programa principal
 public class Main {
+
     public static void main(String[] args) {
-        NotificationManager manager = new NotificationManager();
-        
-        // Ejemplos de uso
-        manager.send("email", "Bienvenido al sistema", "usuario@email.com");
-        manager.send("sms", "Tu código es 1234", "+34123456789");
-        manager.send("push", "Tienes un nuevo mensaje", "user_device_001");
+
+        NotificationManager emailManager = new NotificationManager(new EmailService());
+        emailManager.sendNotification("Hola por email");
+
+        NotificationManager smsManager = new NotificationManager(new SMSService());
+        smsManager.sendNotification("Hola por sms");
+
+        NotificationManager pushManager = new NotificationManager(new PushService());
+        pushManager.sendNotification("Hola por push");
     }
 }
