@@ -4,10 +4,14 @@ import java.util.*;
 public class Library {
     private List<Book> books = new ArrayList<>();
     
-    public void addBook(Book book) {
-        // BUG 4: Permite libros duplicados (mismo ISBN)
-        books.add(book);
+public void addBook(Book book) {
+    for (Book b : books) {
+        if (b.getIsbn().equals(book.getIsbn())) {
+            return;
+        }
     }
+    books.add(book);
+}
     
     public Book findBookByTitle(String title) {
         // BUG 5: Sensible a mayúsculas/minúsculas
