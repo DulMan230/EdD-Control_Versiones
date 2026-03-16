@@ -5,12 +5,19 @@ public class Library {
     private List<Book> books = new ArrayList<>();
     
 public void addBook(Book book) {
-    for (Book b : books) {
-        if (b.getIsbn().equals(book.getIsbn())) {
-            return;
-        }
+    if (isDuplicateIsbn(book.getIsbn())) {
+        return;
     }
     books.add(book);
+}
+
+private boolean isDuplicateIsbn(String isbn) {
+    for (Book b : books) {
+        if (b.getIsbn().equals(isbn)) {
+            return true;
+        }
+    }
+    return false;
 }
     
     public Book findBookByTitle(String title) {
