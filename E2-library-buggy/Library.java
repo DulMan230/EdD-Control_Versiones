@@ -42,4 +42,15 @@ private boolean isDuplicateIsbn(String isbn) {
     }
     
     // BUG 8: Falta método para quitar libros
+    public void removeBook(String isbn) {
+    Iterator<Book> iterator = books.iterator();
+
+    while (iterator.hasNext()) {
+        Book book = iterator.next();
+        if (book.getIsbn().equals(isbn)) {
+            iterator.remove();
+            return;
+        }
+    }
+}
 }
