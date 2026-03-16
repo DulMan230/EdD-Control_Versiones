@@ -17,10 +17,14 @@ public class Book {
     public boolean isAvailable() { return available; }
     
     public void borrow() {
+    if (available) {
         available = false;
     }
-    
-    public void returnBook() {
+}
+
+public void returnBook() {
+    if (!available) {
         available = true;
     }
+}
 }
